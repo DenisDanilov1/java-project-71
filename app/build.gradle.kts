@@ -1,5 +1,5 @@
 plugins {
-    id("java")
+    id("checkstyle")
     application
 }
 
@@ -10,9 +10,13 @@ repositories {
     mavenCentral()
 }
 
-application { mainClass.set("io.hexlet.App") }
+application {
+    mainClass = "hexlet.code.App"
+}
 
 dependencies {
+    implementation("org.apache.commons:commons-lang3:3.14.0")
+    implementation("org.apache.commons:commons-collections4:4.4")
     testImplementation(platform("org.junit:junit-bom:5.9.1"))
     testImplementation("org.junit.jupiter:junit-jupiter")
 }
