@@ -15,6 +15,7 @@ application {
 }
 
 dependencies {
+    implementation ("info.picocli:picocli:4.7.5")
     implementation("org.apache.commons:commons-lang3:3.14.0")
     implementation("org.apache.commons:commons-collections4:4.4")
     testImplementation(platform("org.junit:junit-bom:5.9.1"))
