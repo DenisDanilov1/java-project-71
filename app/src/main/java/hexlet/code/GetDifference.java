@@ -1,6 +1,12 @@
 package hexlet.code;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.LinkedHashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Objects;
+import java.util.Set;
+import java.util.TreeSet;
 
 public class GetDifference {
     public static List<Map<String, Object>> differ(Map<String, Object> map1, Map<String, Object> map2) {
@@ -8,7 +14,7 @@ public class GetDifference {
         Set<String> keysSet = new TreeSet<>(map1.keySet());
         keysSet.addAll(map2.keySet());
         for (String key : keysSet) {
-            Map<String, Object> map = new HashMap<>();
+            Map<String, Object> map = new LinkedHashMap<>();
             if (map1.containsKey(key) && !map2.containsKey(key)) {
                 map.put("key", key);
                 map.put("oldValue", map1.get(key));
