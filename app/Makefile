@@ -12,8 +12,14 @@ build:
 install:
 	./gradlew clean install
 
-run-dist:
+run-help:
 	./build/install/app/bin/app -h
+
+run-diff:
+	./build/install/app/bin/app ./src/test/resources/file1.json ./src/test/resources/file2.json
+
+run-complex:
+	./build/install/app/bin/app ./src/test/resources/fileComplex1.json ./src/test/resources/fileComplex2.json
 
 run:
 	./gradlew run

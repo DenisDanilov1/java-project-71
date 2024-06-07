@@ -6,36 +6,29 @@ import picocli.CommandLine;
 import picocli.CommandLine.Command;
 
 import java.util.concurrent.Callable;
-import java.io.File;
-import java.math.BigInteger;
-import java.nio.file.Files;
-import java.security.MessageDigest;
 
-        @Command(name = "gendiff", mixinStandardHelpOptions = true,
+        @Command(name = "gendiff", mixinStandardHelpOptions = true, version = "gendiff 1.0",
                 description = "Compares two configuration files and shows a difference.")
 
         class App implements Callable<Integer> {
-            @Parameters(index = "0", paramLabel = "filepath1", description = "path to first file")
-            private File filepath1;
+            @Parameters(paramLabel = "filepath1", description = "path to first file")
+            private String filepath1;
 
-            @Parameters(index = "0", paramLabel = "filepath2", description = "path to second file")
-            private File filepath2;
+            @Parameters(paramLabel = "filepath2", description = "path to second file")
+            private String filepath2;
 
-            @Option(names = {"-f", "--format"}, paramLabel = "format", description = "output format [default: stylish]")
+            @Option(names = {"-f", "--format"},
+                    description = "output format: stylish, plain, json, no-format [default: ${DEFAULT-VALUE}]",
+                    defaultValue = "stylish")
             private String format;
 
         @Override
         public Integer call() throws Exception {
-            byte[] fileContents1 = Files.readAllBytes(filepath1.toPath());
-            byte[] fileContents2 = Files.readAllBytes(filepath1.toPath());
-            byte[] digest1 = MessageDigest.getInstance(format).digest(fileContents1);
-            byte[] digest2 = MessageDigest.getInstance(format).digest(fileContents2);
-            System.out.printf("%0" + (digest1.length*2) + "x%n", new BigInteger(1, digest1));
-            System.out.printf("%0" + (digest2.length*2) + "x%n", new BigInteger(1, digest2));
+            System.out.println(Differ.generate(filepath1, filepath2, format));
             return 0;
         }
 
-        public static void main(String... args) {
+        public static void main(String[] args) {
             int exitCode = new CommandLine(new App()).execute(args);
             System.exit(exitCode);
         }
