@@ -59,7 +59,7 @@ public class DifferTest {
     public void testStylish2() throws Exception {
         String expected = resultComplexStylish;
         assertEquals(expected, Differ.generate(getFixturePath("fileComplex1.json").toString(),
-                getFixturePath("fileComplex2.json").toString(),"stylish"));
+                getFixturePath("fileComplex2.json").toString(), "stylish"));
     }
 
     @Test
@@ -87,6 +87,6 @@ public class DifferTest {
     public void testJson2() throws Exception {
         String expected = resultJson;
         assertEquals(expected, Differ.generate(getFixturePath("fileComplex1.yaml").toString(),
-                getFixturePath("fileComplex2.yaml").toString(),"json"));
+                getFixturePath("fileComplex2.yaml").toString(), "json"));
     }
 }
