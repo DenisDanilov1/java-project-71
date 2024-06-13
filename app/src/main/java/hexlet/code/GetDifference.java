@@ -28,7 +28,7 @@ public class GetDifference {
                 map.put("oldValue", map1.get(key));
                 map.put("newValue", map2.get(key));
                 map.put("status", "updated");
-            } else if (Objects.equals(map1.get(key), map2.get(key))){
+            } else if (Objects.equals(map1.get(key), map2.get(key))) {
                 map.put("key", key);
                 map.put("oldValue", map1.get(key));
                 map.put("status", "unchanged");

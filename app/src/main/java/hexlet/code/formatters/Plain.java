@@ -10,7 +10,7 @@ public class Plain {
     public static String formatPlain(List<Map<String, Object>> differences) {
         StringBuilder result = new StringBuilder();
         for (Map<String, Object> diffs : differences) {
-            String status =diffs.get("status").toString();
+            String status = diffs.get("status").toString();
             switch (status) {
                 case "removed" -> result.append("Property ").append("'")
                         .append(diffs.get("key")).append("'").append(" was removed").append("\n");
