@@ -10,14 +10,17 @@ import java.util.Map;
 
 public class Formatter {
     public static String formatStyle(List<Map<String, Object>> differences, String format) throws IOException {
-        if (format.equals("stylish")) {
-            return Stylish.formatStylish(differences);
-        } else if (format.equals("json")) {
-            return Json.formatJson(differences);
-        } else if (format.equals("plain")) {
-            return Plain.formatPlain(differences);
-        } else {
-            System.out.println("Format" + format + "is not correct!");
+        switch (format) {
+            case "stylish" -> {
+                return Stylish.formatStylish(differences);
+            }
+            case "json" -> {
+                return Json.formatJson(differences);
+            }
+            case "plain" -> {
+                return Plain.formatPlain(differences);
+            }
+            default -> System.out.println("Format" + format + "is not correct!");
         }
         return Stylish.formatStylish(differences);
     }

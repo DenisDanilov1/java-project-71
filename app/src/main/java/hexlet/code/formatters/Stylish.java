@@ -7,7 +7,8 @@ public class Stylish {
     public static String formatStylish(List<Map<String, Object>> differences) {
         StringBuilder result = new StringBuilder("{\n");
         for (Map<String, Object> node : differences) {
-            switch (node.get("status").toString()) {
+            String status = node.get("status").toString();
+            switch (status) {
                 case "removed" -> result.append("  - ").
                                 append(node.get("key")).
                                 append(": ").
@@ -23,7 +24,7 @@ public class Stylish {
                         append(": ").
                         append(node.get("oldValue")).
                         append("\n");
-                default -> {
+                case "updated" -> {
                     result.append("  - ").
                             append(node.get("key")).
                             append(": ").
@@ -35,6 +36,7 @@ public class Stylish {
                             append(node.get("newValue")).
                             append("\n");
                 }
+                default -> throw new RuntimeException("Unknown status: " + status);
             }
         }
         result.append("}");

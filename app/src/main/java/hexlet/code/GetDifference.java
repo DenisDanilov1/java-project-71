@@ -28,10 +28,12 @@ public class GetDifference {
                 map.put("oldValue", map1.get(key));
                 map.put("newValue", map2.get(key));
                 map.put("status", "updated");
-            } else {
+            } else if (Objects.equals(map1.get(key), map2.get(key))){
                 map.put("key", key);
                 map.put("oldValue", map1.get(key));
                 map.put("status", "unchanged");
+            } else {
+                throw new RuntimeException("Unknown status: " + key);
             }
             result.add(map);
         }
