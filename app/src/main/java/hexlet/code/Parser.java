@@ -10,10 +10,20 @@ import java.util.TreeMap;
 public class Parser {
     public static TreeMap<String, Object> parser(String data, String dataType) throws IOException {
         ObjectMapper objectmapper = chooseFormat(dataType);
-        return objectmapper.readValue(data, new TypeReference<>() { });
+        return objectmapper.readValue(data, new TypeReference<>() {
+        });
     }
 
     private static ObjectMapper chooseFormat(String dataType) {
-        return "json".equals(dataType) ? new ObjectMapper() : new ObjectMapper(new YAMLFactory());
+        switch (dataType) {
+            case "json" -> {
+                return new ObjectMapper();
+            }
+            case "yaml", "yml" -> {
+                return new ObjectMapper(new YAMLFactory());
+            }
+            default -> System.out.println("DataType" + dataType + "is not correct!");
+        }
+        return new ObjectMapper();
     }
 }

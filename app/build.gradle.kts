@@ -15,6 +15,7 @@ application {
 }
 
 dependencies {
+    testImplementation("org.assertj:assertj-core:3.22.0")
     implementation ("com.fasterxml.jackson.core:jackson-databind:2.13.4")
     implementation ("com.fasterxml.jackson.dataformat:jackson-dataformat-yaml:2.13.4")
     implementation ("info.picocli:picocli:4.7.5")

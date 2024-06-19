@@ -16,10 +16,10 @@ run-help:
 	./build/install/app/bin/app -h
 
 run-diff:
-	./build/install/app/bin/app ./src/test/resources/file1.json ./src/test/resources/file2.json
+	./build/install/app/bin/app file1.json file2.json
 
 run-complex:
-	./build/install/app/bin/app ./src/test/resources/fileComplex1.json ./src/test/resources/fileComplex2.json
+	./build/install/app/bin/app fileComplex1.json fileComplex2.json
 
 run:
 	./gradlew run
