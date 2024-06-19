@@ -35,5 +35,5 @@ make run-help
 ```
 
 ## [List of asciinema links for comparisons](https://asciinema.org/~DenisDanilov1)
-[![asciicast](https://asciinema.org/a/olKT7WpzejJsv0pYjUTUzDjE9.svg)](https://asciinema.org/a/olKT7WpzejJsv0pYjUTUzDjE9)
+[![asciicast](https://asciinema.org/a/raoSruvyXZ8Goui5gExo4drwv.svg)](https://asciinema.org/a/raoSruvyXZ8Goui5gExo4drwv)
 [![asciicast](https://asciinema.org/a/olKT7WpzejJsv0pYjUTUzDjE9.svg)](https://asciinema.org/a/olKT7WpzejJsv0pYjUTUzDjE9)
