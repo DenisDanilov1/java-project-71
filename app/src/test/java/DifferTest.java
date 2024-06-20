@@ -1,13 +1,14 @@
 import hexlet.code.Differ;
 import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
 public class DifferTest {
 
@@ -36,57 +37,14 @@ public class DifferTest {
         resultComplexStylish = readFixture("resultComplexStylish");
     }
 
-    @Test
-    public void testDefault1() throws Exception {
-        String expected = resultStylish;
-        assertEquals(expected, Differ.generate(getFixturePath("file1.json").toString(),
-                getFixturePath("file2.json").toString()));
-    }
-    @Test
-    public void testDefault2() throws Exception {
-        String expected = resultComplexStylish;
-        assertEquals(expected, Differ.generate(getFixturePath("fileComplex1.json").toString(),
-                getFixturePath("fileComplex2.json").toString()));
-    }
-    @Test
-    public void testStylish1() throws Exception {
-        String expected = resultStylish;
-        assertEquals(expected, Differ.generate(getFixturePath("file1.json").toString(),
-                getFixturePath("file2.json").toString(), "stylish"));
-    }
-
-    @Test
-    public void testStylish2() throws Exception {
-        String expected = resultComplexStylish;
-        assertEquals(expected, Differ.generate(getFixturePath("fileComplex1.json").toString(),
-                getFixturePath("fileComplex2.json").toString(), "stylish"));
-    }
-
-    @Test
-    public void testPlain1() throws Exception {
-        String expected = resultPlain;
-        assertEquals(expected, Differ.generate(getFixturePath("fileComplex1.json").toString(),
-                getFixturePath("fileComplex2.json").toString(), "plain"));
-    }
-
-    @Test
-    public void testPlain2() throws Exception {
-        String expected = resultPlain;
-        assertEquals(expected, Differ.generate(getFixturePath("fileComplex1.yaml").toString(),
-                getFixturePath("fileComplex2.yaml").toString(), "plain"));
-    }
-
-    @Test
-    public void testJson1() throws Exception {
-        String expected = resultJson;
-        assertEquals(expected, Differ.generate(getFixturePath("fileComplex1.json").toString(),
-                getFixturePath("fileComplex2.json").toString(), "json"));
-    }
-
-    @Test
-    public void testJson2() throws Exception {
-        String expected = resultJson;
-        assertEquals(expected, Differ.generate(getFixturePath("fileComplex1.yaml").toString(),
-                getFixturePath("fileComplex2.yaml").toString(), "json"));
-    }
+    @ParameterizedTest
+    @ValueSource(strings = {"json", "yml"})
+    public void generateTest(String format) throws Exception {
+        String filePath1 = getFixturePath("file1." + format).toString();
+        String filePath2 = getFixturePath("file2." + format).toString();
+        assertThat(Differ.generate(filePath1, filePath2)).isEqualTo(resultStylish);
+        assertThat(Differ.generate(filePath1, filePath2)).isEqualTo(resultJson);
+        assertThat(Differ.generate(filePath1, filePath2)).isEqualTo(resultComplexStylish);
+        assertThat(Differ.generate(filePath1, filePath2)).isEqualTo(resultPlain);
+   }
 }
