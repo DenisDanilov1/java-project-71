@@ -50,8 +50,5 @@ public class DifferTest {
         assertThat(Differ.generate(filePath1, filePath2, "stylish")).isEqualTo(resultComplexStylish);
         assertThat(Differ.generate(filePath1, filePath2, "plain")).isEqualTo(resultPlain);
         assertThat(Differ.generate(filePath1, filePath2, "json")).isEqualTo(resultJson);
-
-
-
    }
 }
