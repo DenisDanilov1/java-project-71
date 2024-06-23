@@ -39,7 +39,7 @@ public class DifferTest {
 
     @ParameterizedTest
     @ValueSource(strings = {"json", "yaml"})
-    public void generateTest(String format) throws Exception {
+    public final void generateTest(String format) throws Exception {
         String flatFilePath1 = getFixturePath("file1." + format).toString();
         String flatFilePath2 = getFixturePath("file2." + format).toString();
         assertThat(Differ.generate(flatFilePath1, flatFilePath2)).isEqualTo(resultStylish);
