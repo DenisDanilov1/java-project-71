@@ -17,15 +17,6 @@ public class Differ {
 
         return Formatter.formatStyle(result, format);
     }
-
-    private static Path getFullPath(String fileName) {
-        return Paths.get("src", "test", "resources", "fixtures", fileName).toAbsolutePath().normalize();
-    }
-
-    public static String generate(String filepath1, String filepath2) throws Exception {
-        return generate(filepath1, filepath2, "stylish");
-    }
-
     private static Map<String, Object> getData(String filePath) throws Exception {
         Path fullPath = getFullPath(filePath);
 
@@ -38,6 +29,15 @@ public class Differ {
 
         return Parser.parser(content, dataFormat);
     }
+    private static Path getFullPath(String filePath) {
+        return Paths.get(filePath).toAbsolutePath().normalize();
+    }
+
+    public static String generate(String filepath1, String filepath2) throws Exception {
+        return generate(filepath1, filepath2, "stylish");
+    }
+
+
 
     public static String getDataFormat(String filepath) {
         return filepath.substring(filepath.indexOf(".") + 1);

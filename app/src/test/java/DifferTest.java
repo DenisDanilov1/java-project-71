@@ -38,13 +38,20 @@ public class DifferTest {
     }
 
     @ParameterizedTest
-    @ValueSource(strings = {"json", "yml"})
-    public void generateTest(String format) throws Exception {
-        String filePath1 = getFixturePath("file1." + format).toString();
-        String filePath2 = getFixturePath("file2." + format).toString();
-        assertThat(Differ.generate(filePath1, filePath2)).isEqualTo(resultStylish);
-        assertThat(Differ.generate(filePath1, filePath2)).isEqualTo(resultJson);
+    @ValueSource(strings = {"json", "yaml"})
+        public void generateTest(String format) throws Exception {
+        String flatFilePath1 = getFixturePath("file1." + format).toString();
+        String flatFilePath2 = getFixturePath("file2." + format).toString();
+        assertThat(Differ.generate(flatFilePath1, flatFilePath2)).isEqualTo(resultStylish);
+
+        String filePath1 = getFixturePath("fileComplex1." + format).toString();
+        String filePath2 = getFixturePath("fileComplex2." + format).toString();
         assertThat(Differ.generate(filePath1, filePath2)).isEqualTo(resultComplexStylish);
-        assertThat(Differ.generate(filePath1, filePath2)).isEqualTo(resultPlain);
+        assertThat(Differ.generate(filePath1, filePath2, "stylish")).isEqualTo(resultComplexStylish);
+        assertThat(Differ.generate(filePath1, filePath2, "plain")).isEqualTo(resultPlain);
+        assertThat(Differ.generate(filePath1, filePath2, "json")).isEqualTo(resultJson);
+
+
+
    }
 }
