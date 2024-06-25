@@ -9,7 +9,9 @@ version = "1.0-SNAPSHOT"
 
 checkstyle {
     toolVersion = "10.12.4"
+    configFile = file("config/checkstyle/checkstyle.xml")
 }
+
 repositories {
     mavenCentral()
 }
@@ -19,6 +21,7 @@ application {
 }
 
 dependencies {
+    implementation("com.puppycrawl.tools:checkstyle:10.12.4")
     implementation ("com.fasterxml.jackson.core:jackson-databind:2.13.4")
     implementation ("com.fasterxml.jackson.dataformat:jackson-dataformat-yaml:2.13.4")
     implementation ("info.picocli:picocli:4.7.5")
