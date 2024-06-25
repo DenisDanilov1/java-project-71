@@ -4,7 +4,7 @@
 [![Actions Status](https://github.com/DenisDanilov1/java-project-71/actions/workflows/hexlet-check.yml/badge.svg)](https://github.com/DenisDanilov1/java-project-71/actions)
 [![Java CI](https://github.com/DenisDanilov1/java-project-71/actions/workflows/main.yml/badge.svg)](https://github.com/DenisDanilov1/java-project-71/actions/workflows/main.yml)
 [![Maintainability](https://api.codeclimate.com/v1/badges/5c00f99a0fb19a59aa8e/maintainability)](https://codeclimate.com/github/DenisDanilov1/java-project-71/maintainability)
-[![Test Coverage](https://api.codeclimate.com/v1/badges/5c00f99a0fb19a59aa8e/test_coverage)](https://codeclimate.com/github/DenisDanilov1/java-project-71/test_coverage)
+[![Test Coverage](https://api.codeclimate.com/v1/badges/4f2a74ec56c58ec09229/test_coverage)](https://codeclimate.com/github/DenisDanilov1/java-project-71/test_coverage)
 
 <p><b>“Difference calculator”</b> is a program that determines the difference between two data structures. A similar mechanism is used when outputting tests or automatically tracking changes in configuration files.</p>
 
